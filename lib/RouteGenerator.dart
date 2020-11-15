@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_flutter/Cadastro.dart';
+import 'package:whatsapp_flutter/Configuracoes.dart';
 import 'package:whatsapp_flutter/Home.dart';
 import 'package:whatsapp_flutter/Login.dart';
 
@@ -26,6 +27,11 @@ class RouteGenerator{
       case "/home" :
         return MaterialPageRoute(
             builder: (_) => Home() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+        );
+
+      case "/configuracoes" :
+        return MaterialPageRoute(
+            builder: (_) => Configuracoes() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
         );
 
       default:

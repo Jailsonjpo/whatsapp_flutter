@@ -39,7 +39,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
     switch(itemEscolhido){
       case "Configurações":
-        print("Configurações");
+        Navigator.pushNamed(context, "/configuracoes");
         break;
 
       case "Deslogar":
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           indicatorColor: Colors.white,
           tabs: [
             Tab(text: "Conversas",),
-            Tab(text: "Contatos",),
+            Tab(text: "Contatos",)
 
           ],
         ),
