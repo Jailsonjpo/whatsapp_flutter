@@ -3,10 +3,13 @@ import 'package:whatsapp_flutter/Cadastro.dart';
 import 'package:whatsapp_flutter/Configuracoes.dart';
 import 'package:whatsapp_flutter/Home.dart';
 import 'package:whatsapp_flutter/Login.dart';
+import 'package:whatsapp_flutter/Mensagens.dart';
 
 class RouteGenerator{
 
   static Route<dynamic> generateRoute(RouteSettings settings){
+
+    final args = settings.arguments;
 
     switch(settings.name) {
       case "/" :
@@ -32,6 +35,11 @@ class RouteGenerator{
       case "/configuracoes" :
         return MaterialPageRoute(
             builder: (_) => Configuracoes() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+        );
+
+      case "/mensagens" :
+        return MaterialPageRoute(
+            builder: (_) => Mensagens(args) //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
         );
 
       default:

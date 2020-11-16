@@ -25,6 +25,7 @@ class _AbaContatosState extends State<AbaContatos> {
       if (dados["email"] == _emailUsuarioLogado) continue;
 
       Usuario usuario = Usuario();
+      usuario.idUsuario = item.id;
       usuario.email = dados["email"];
       usuario.nome = dados["nome"];
       usuario.urlImagem = dados["urlImagem"];
@@ -75,6 +76,13 @@ class _AbaContatosState extends State<AbaContatos> {
                   Usuario usuario = listaItens[indice];
 
                   return ListTile(
+                    onTap: (){
+                      Navigator.pushNamed(
+                          context,
+                          "/mensagens",
+                        arguments: usuario
+                      );
+                    },
                     contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                     leading: CircleAvatar(
                         maxRadius: 30,
