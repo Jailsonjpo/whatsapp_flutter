@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_flutter/Login.dart';
 import 'package:whatsapp_flutter/telas/AbaContatos.dart';
 import 'package:whatsapp_flutter/telas/AbaConversas.dart';
+import 'dart:io';
 
 class Home extends StatefulWidget {
   @override
@@ -70,6 +71,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text("Whatsapp"),
+        elevation: Platform.isIOS ? 0 : 4,
         bottom: TabBar(
           indicatorWeight: 4,
           labelStyle: TextStyle(
@@ -77,7 +79,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             fontWeight: FontWeight.bold
           ),
           controller: _tabController,
-          indicatorColor: Colors.white,
+          indicatorColor: Platform.isIOS ? Colors.grey[400] : Colors.white,
           tabs: [
             Tab(text: "Conversas",),
             Tab(text: "Contatos",)

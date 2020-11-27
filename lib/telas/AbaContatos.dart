@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_flutter/model/Conversa.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whatsapp_flutter/model/Usuario.dart';
 
 class AbaContatos extends StatefulWidget {
@@ -10,19 +11,21 @@ class AbaContatos extends StatefulWidget {
 }
 
 class _AbaContatosState extends State<AbaContatos> {
+
   String _idUsuarioLogado;
   String _emailUsuarioLogado;
 
   Future<List<Usuario>> _recuperarContatos() async {
     FirebaseFirestore db = FirebaseFirestore.instance;
-    QuerySnapshot querySnapshot = await db.collection("usuarios").get();
+
+    QuerySnapshot querySnapshot =
+    await db.collection("usuarios").get();
 
     List<Usuario> listaUsuarios = List();
-
     for (DocumentSnapshot item in querySnapshot.docs) {
-      var dados = item.data();
 
-      if (dados["email"] == _emailUsuarioLogado) continue;
+      var dados = item.data();
+      if( dados["email"] == _emailUsuarioLogado ) continue;
 
       Usuario usuario = Usuario();
       usuario.idUsuario = item.id;
@@ -32,19 +35,21 @@ class _AbaContatosState extends State<AbaContatos> {
 
       listaUsuarios.add(usuario);
     }
+
     return listaUsuarios;
   }
 
   _recuperarDadosUsuario() async {
+
     FirebaseAuth auth = FirebaseAuth.instance;
     User usuarioLogado = await auth.currentUser;
     _idUsuarioLogado = usuarioLogado.uid;
     _emailUsuarioLogado = usuarioLogado.email;
+
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _recuperarDadosUsuario();
   }
@@ -59,19 +64,19 @@ class _AbaContatosState extends State<AbaContatos> {
           case ConnectionState.waiting:
             return Center(
               child: Column(
-                children: [
+                children: <Widget>[
                   Text("Carregando contatos"),
                   CircularProgressIndicator()
                 ],
               ),
             );
             break;
-
           case ConnectionState.active:
           case ConnectionState.done:
             return ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (_, indice) {
+
                   List<Usuario> listaItens = snapshot.data;
                   Usuario usuario = listaItens[indice];
 
@@ -80,7 +85,7 @@ class _AbaContatosState extends State<AbaContatos> {
                       Navigator.pushNamed(
                           context,
                           "/mensagens",
-                        arguments: usuario
+                          arguments: usuario
                       );
                     },
                     contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
@@ -93,7 +98,7 @@ class _AbaContatosState extends State<AbaContatos> {
                     title: Text(
                       usuario.nome,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                   );
                 });

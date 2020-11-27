@@ -1,51 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_flutter/Cadastro.dart';
-import 'package:whatsapp_flutter/Configuracoes.dart';
-import 'package:whatsapp_flutter/Home.dart';
-import 'package:whatsapp_flutter/Login.dart';
-import 'package:whatsapp_flutter/Mensagens.dart';
 
-class RouteGenerator{
+import 'Cadastro.dart';
+import 'Configuracoes.dart';
+import 'Home.dart';
+import 'Login.dart';
+import 'Mensagens.dart';
+
+class RouteGenerator {
 
   static Route<dynamic> generateRoute(RouteSettings settings){
 
     final args = settings.arguments;
 
-    switch(settings.name) {
+    switch( settings.name ){
       case "/" :
-      return MaterialPageRoute(
-          builder: (_) => Login() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
-      );
-
+        return MaterialPageRoute(
+            builder: (_) => Login()
+        );
       case "/login" :
         return MaterialPageRoute(
-            builder: (_) => Login() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+            builder: (_) => Login()
         );
-
       case "/cadastro" :
         return MaterialPageRoute(
-            builder: (_) => Cadastro() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+            builder: (_) => Cadastro()
         );
-
       case "/home" :
         return MaterialPageRoute(
-            builder: (_) => Home() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+            builder: (_) => Home()
         );
-
       case "/configuracoes" :
         return MaterialPageRoute(
-            builder: (_) => Configuracoes() //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+            builder: (_) => Configuracoes()
         );
-
       case "/mensagens" :
         return MaterialPageRoute(
-            builder: (_) => Mensagens(args) //utilizar o "_" ao invés de "context" continua recebendo parâmetro mas não ocupa espaço na memória.
+            builder: (_) => Mensagens(args)
         );
-
       default:
         _erroRota();
-
     }
+
   }
 
   static Route<dynamic> _erroRota(){
@@ -54,7 +49,7 @@ class RouteGenerator{
           return Scaffold(
             appBar: AppBar(title: Text("Tela não encontrada!"),),
             body: Center(
-              child: Text("Tela não encontrada!") ,
+              child: Text("Tela não encontrada!"),
             ),
           );
         }

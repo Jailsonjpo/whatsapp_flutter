@@ -1,24 +1,35 @@
-class Mensagem{
+
+class Mensagem {
 
   String _idUsuario;
   String _mensagem;
   String _urlImagem;
 
-  //Define o tipo da mensagem, que pode ser "Texto" ou "imagem"
+  //Define o tipo da mensagem, que pode ser "texto" ou "imagem"
   String _tipo;
+  String _data;
 
   Mensagem();
 
   Map<String, dynamic> toMap(){
 
     Map<String, dynamic> map = {
-      "idUsuario"  : this.idUsuario,
-      "mensagem"   : this.mensagem,
-      "urlImagem"  : this.urlImagem,
-      "tipo"       : this.tipo
+      "idUsuario" : this.idUsuario,
+      "mensagem" : this.mensagem,
+      "urlImagem" : this.urlImagem,
+      "tipo" : this.tipo,
+      "data" : this.data,
     };
 
     return map;
+
+  }
+
+
+  String get data => _data;
+
+  set data(String value) {
+    _data = value;
   }
 
   String get tipo => _tipo;
@@ -44,4 +55,6 @@ class Mensagem{
   set idUsuario(String value) {
     _idUsuario = value;
   }
+
+
 }
