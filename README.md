@@ -1,6 +1,12 @@
 # whatsapp_flutter
 
-A new Flutter application.
+Description
+
+An application developed with the Dart language, clone of the famous App Whatsapp, uses Firebase Cloud Firestore database
+
+![GitHub repo size](https://img.shields.io/github/repo-size/jailsonjpo/whatsapp_flutter)
+![GitHub language count](https://img.shields.io/github/languages/count/jailsonjpo/whatsapp_flutter)
+![GitHub top language](https://img.shields.io/github/languages/top/jailsonjpo/whatsapp_flutter)
 
 ## Getting Started
 
